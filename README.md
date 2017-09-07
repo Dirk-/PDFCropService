@@ -1,9 +1,9 @@
 ## PDFCropService
 PDFCropService is a workflow for the macOS Finder `Services` menu. It crops vector or bitmap 
-images saved as PDF files from the print dialog, for example. It is useful when you want do insert
+images saved as PDF files from the print dialog, for example. It is useful when you want to insert
 high-quality graphics into a, say, LaTeX, Word or Pages document and your graphics app only 
-offers you the option to save graphics as full pages from the print dialog. PDFCropWorkflow
-automatically trims all white margins so any picture can easily imported into a text
+offers saving graphics as full pages from the print dialog. PDFCropService
+automatically trims all white margins, so that any picture can easily be imported into a text
 document.
 
 ## Setup
@@ -20,7 +20,7 @@ click on a PDF.
 ## Usage
 
 Using Finder, right-click on a PDF (or several PDFs) to open the context menu, navigate 
-to `Services` and `Crop PDF Graphic`. The original PDF will remain untouched, the cropped 
+to `Services` and select `Crop PDF Graphic`. The original PDF will remain untouched, the cropped 
 file will be marked with `_cropped`. you can try it with the included `test.pdf`:
 
 `test.pdf` -> `test_cropped.pdf`
