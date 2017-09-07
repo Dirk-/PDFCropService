@@ -8,7 +8,7 @@ document.
 
 ## Setup
 
-1. Install [Homebrew](https://brew.sh). You can do it with `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+1. Install [Homebrew](https://brew.sh). You can do that with `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 2. Install `ps2eps` which does all the work (convert single page PDFs to EPS and calculate
 the bounding box): `brew install ps2eps`
 3. Double click the Automator service `Crop PDF Graphic`. You can decide whether to open it in 
@@ -21,7 +21,7 @@ click on a PDF.
 
 Using Finder, right-click on a PDF (or several PDFs) to open the context menu, navigate 
 to `Services` and select `Crop PDF Graphic`. The original PDF will remain untouched, the cropped 
-file will be marked with `_cropped`. you can try it with the included `test.pdf`:
+file will be marked with `_cropped`. You can try it with the included `test.pdf`:
 
 `test.pdf` -> `test_cropped.pdf`
  
