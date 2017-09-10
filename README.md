@@ -44,8 +44,8 @@ do
 
 	# Convert to Postscript format
 	pdf2ps "$f"
-	# Calculate and set bounding box
-	ps2eps "$name".ps
+	# Calculate and set bounding box, --loose expands the original tight bounding box by one point in each direction
+	ps2eps --loose "$name".ps
 	# Convert back to PDF using Ghostscript, important option is "-dEPSCrop"
 	gs -q -dNOPAUSE -dBATCH -dDOINTERPOLATE -dUseFlateCompression=true -sDEVICE=pdfwrite -r1200 -dEPSCrop -sOutputFile="$name"_cropped.pdf -f "$name".eps
 
