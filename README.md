@@ -56,4 +56,4 @@ done
 ```
 
 If you happen to have [MacTeX](http://tug.org/mactex/) or a similar LaTeX version installed, 
-you can edit the script and replace pdf2ps, ps2eps and gs with a call to [pdfcrop](https://www.ctan.org/pkg/pdfcrop?).
+you can edit the script and replace `pdf2ps`, `ps2eps` and `gs` with a call to [`pdfcrop`](https://www.ctan.org/pkg/pdfcrop?).
