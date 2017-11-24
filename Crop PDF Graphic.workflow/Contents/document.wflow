@@ -70,16 +70,22 @@ do
 	# Just providing the complete path to ps2eps is not sufficient
 	PATH=$PATH:/usr/local/bin:/opt/local/bin
 
-	# Convert to Postscript format
-	pdf2ps "$f"
+	# Convert to Postscript format, taking care of whitespaces
+	eval pdf2ps "'$f'"
+
+	# Trim all whitespace for ps2eps
+	name_nowhitespace="$(echo -e "${name}" | tr -d '[:space:]')"
+	mv "$name".ps "$name_nowhitespace".ps
+
 	# Calculate and set bounding box, --loose expands the original tight bounding box by one point in each direction
-	ps2eps --loose "$name".ps
+	ps2eps --loose "$name_nowhitespace".ps
+
 	# Convert back to PDF using Ghostscript, important option is "-dEPSCrop"
-	gs -q -dNOPAUSE -dBATCH -dDOINTERPOLATE -dUseFlateCompression=true -sDEVICE=pdfwrite -r1200 -dEPSCrop -sOutputFile="$name"_cropped.pdf -f "$name".eps
+	gs -q -dNOPAUSE -dBATCH -dDOINTERPOLATE -dUseFlateCompression=true -sDEVICE=pdfwrite -r1200 -dEPSCrop -sOutputFile="$name"_cropped.pdf -f "$name_nowhitespace".eps
 
 	# Remove temporary files
-	rm "$name".ps
-	rm "$name".eps
+	rm "$name_nowhitespace".ps
+	rm "$name_nowhitespace".eps
 done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -193,7 +199,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>463.000000:684.000000</string>
+				<string>463.000000:756.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/German.lproj/main.nib</string>
 			</dict>
