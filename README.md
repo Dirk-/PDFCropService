@@ -42,7 +42,7 @@ do
 	# Just providing the complete path to ps2eps is not sufficient
 	PATH=$PATH:/usr/local/bin:/opt/local/bin
 
-	# Convert to Postscript format, taking care of whitespaces
+	# Convert to Postscript format, taking care of whitespace characters
 	eval pdf2ps "'$f'"
 
 	# Trim all whitespace for ps2eps
