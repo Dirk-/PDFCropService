@@ -40,7 +40,7 @@ do
 
 	# Add brew directories to PATH variable, since ps2eps is a Pearl script which uses Ghostscript
 	# Just providing the complete path to ps2eps is not sufficient
-	PATH=$PATH:/usr/local/bin:/opt/local/bin
+	PATH=$PATH:/usr/local/bin:/opt/local/bin:/opt/homebrew/bin
 
 	# Convert to Postscript format, taking care of whitespace characters
 	eval pdf2ps "'$f'"
