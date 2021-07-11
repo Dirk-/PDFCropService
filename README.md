@@ -1,4 +1,4 @@
-## PDFCropService
+# PDFCropService
 PDFCropService is a workflow for the macOS Finder `Services` menu. It crops vector or bitmap 
 images saved as PDF files from the print dialog, for example. It is useful when you want to insert
 high-quality graphics into a, say, LaTeX, Word or Pages document and your graphics app only 
@@ -8,27 +8,35 @@ document.
 
 ## Setup
 
-1. Install [Homebrew](https://brew.sh). You can do that with `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-2. Install `ps2eps` which does all the work (convert single page PDFs to EPS and calculate
+1. Download ZIP file from this GitHub page.
+
+2. Install [Homebrew](https://brew.sh). You can do that with `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
+3. Install `ps2eps` which does all the work (convert single page PDFs to EPS and calculate
 the bounding box): `brew install ps2eps`
-3. Double click the Automator service `Crop PDF Graphic`. You can decide whether to open it in 
-Automator or to install it. If you choose to install it, it will be placed inside the  
-`Services` folder in your user's `Library` folder.
-4. After installation the service is available in the `Services` context menu when you
+
+4. Double click the Automator service `Crop PDF Graphic`. You can decide whether to open it in 
+Automator or to install it. If you choose to install it, it will be placed inside the `Services` folder in your user's `Library` folder.
+
+or
+
+4. If you have [MacTeX](http://tug.org/mactex/) installed, double click the Automator service `Crop PDF with pdfcrop`. You can decide whether to open it in 
+Automator or to install it. If you choose to install it, it will be placed inside the `Services` folder in your user's `Library` folder. This script version uses [`pdfcrop`](https://www.ctan.org/pkg/pdfcrop?) from the MacTeX installation.
+
+After installation the service is available in the `Services` context menu when you
 click on a PDF.
 
 ## Usage
 
 Using Finder, right-click on a PDF (or several PDFs) to open the context menu, navigate 
-to `Services` and select `Crop PDF Graphic`. The original PDF will remain untouched, the cropped 
-file will be marked with `_cropped`. You can try it with the included `test.pdf`:
+to `Services` and select `Crop PDF Graphic` or `Crop PDF with pdfcrop`. The original PDF will remain untouched, the cropped file will be marked with `_cropped`. You can try it with the included `test.pdf`:
 
 `test.pdf` -> `test_cropped.pdf`
  
  
 ## Info
  
-Inside the Automator document there is a bash script:
+Inside the Automator document `Crop PDF Graphic` there is a `bash` script:
  
 ```bash
 for f in "$@"
@@ -61,5 +69,8 @@ do
 done
 ```
 
-If you happen to have [MacTeX](http://tug.org/mactex/) or a similar LaTeX version installed, 
-you can edit the script and replace `pdf2ps`, `ps2eps` and `gs` with a call to [`pdfcrop`](https://www.ctan.org/pkg/pdfcrop?).
+## Troubleshooting
+
+If you have [MacTeX](http://tug.org/mactex/) installed, both script versions will probably fail with an error from ghostscript ("Can't find initialization file gs_init.ps"). If this happens, you can issue `brew link --overwrite ghostscript` to force the usage of homebrew's version of ghostscript.
+
+`pdfcrop` from the MacTeX package also only works if you do that.
