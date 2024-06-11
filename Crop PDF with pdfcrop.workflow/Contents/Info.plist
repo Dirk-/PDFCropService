@@ -12,7 +12,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Crop PDF with pdfcrop</string>
+				<string>Crop PDF with pdfcrop2</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>

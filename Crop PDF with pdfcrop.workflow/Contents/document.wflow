@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>509</string>
+	<string>523</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -59,17 +59,11 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>for f in "$@"
+					<string># Add brew directories to PATH variable, since pdfcrop is a Pearl script which uses Ghostscript
+# Just providing the complete path to pdfcrop is not sufficient
+PATH=$PATH:/usr/local/bin:/opt/local/bin:/opt/homebrew/bin:/Library/TeX/texbin
+for f in "$@"
 do
-	# Edit given file path
-	name=$( basename "$f" .pdf) # name of file without path and without extension
-	dir=$( dirname "$f" ) # name of directory of file
-	cd "$dir" # Make it the working directory
-
-	# Add brew directories to PATH variable, since pdfcrop is a Pearl script which uses Ghostscript
-	# Just providing the complete path to pdfcrop is not sufficient
-	PATH=$PATH:/usr/local/bin:/opt/local/bin:/opt/homebrew/bin:/Library/TeX/texbin
-
 	# Crop it
 	eval pdfcrop "'$f'"
 done</string>
@@ -185,7 +179,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>408.000000:647.000000</string>
+				<string>352.000000:555.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
